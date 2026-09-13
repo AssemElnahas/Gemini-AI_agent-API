@@ -1,0 +1,12 @@
+google-genai==2.23.0
+fastapi==0.141.1
+uvicorn[standard]== 0.52.4
+python-dotenv==1.2.3
+
+SQLAlchemy==2.0.52
+psycopg2-binary==2.9.13
+
+sentence-transformers==6.0.1
+faiss-cpu==1.15.0
+
+httpx==0.28.1

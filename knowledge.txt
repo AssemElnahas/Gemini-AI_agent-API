@@ -1,0 +1,19 @@
+```
+Our company sells running shoes and sports shoes.
+
+Nike Air Max costs $120 and is available in sizes 40, 41, 42, 43, and 44.
+
+Adidas Ultraboost costs $150 and is available in sizes 41, 42, and 43.
+
+Puma RS-X costs $100 and is available in sizes 39, 40, 41, 42, and 43.
+
+Customers can return products within 14 days.
+
+Products must be unused and in their original packaging to qualify for a return.
+
+Standard shipping takes 3 to 5 business days.
+
+Premium customers receive free standard shipping.
+
+Customer support is available Monday through Friday from 9 AM to 6 PM.
+```
