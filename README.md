@@ -1,181 +1,169 @@
-# 🤖 Gemini AI Agent
+# 🤖 Gemini AI Agent API
 
-A modular AI Agent backend built with **Python, Google Gemini, FastAPI, RAG, and tools**.
+A Python-based **AI Agent API** powered by Google's Gemini LLM.
 
-This project demonstrates how to build an AI agent from scratch, connect it to a Gemini LLM, give it tools, and expose it through a REST API.
+This project demonstrates how to build an AI agent from scratch with Python, connect it to Gemini, add custom tools, use a simple RAG system, and expose the agent through a REST API using FastAPI.
 
----
-
-# 📋 Requirements
-
-Before starting, make sure you have:
-
-* Windows 10/11
-* Internet connection
-* VS Code
-* Git
-* Python 3.11+ recommended
-* A Google Gemini API key
+The project is designed as a **portfolio-ready foundation for AI Agent development**.
 
 ---
 
-# 🐍 1. Install Python
+## 🚀 Features
+
+* 🤖 Gemini LLM integration
+* 🧠 AI Agent architecture
+* 🔎 Basic RAG (Retrieval-Augmented Generation)
+* 🛠️ Custom AI tools
+* ⚡ FastAPI REST API
+* 🔐 Environment variables for API keys
+* 📄 `.env.example` configuration
+* 📦 Python virtual environment support
+* 🧪 Easy API testing with Swagger UI
+* 🏗️ Modular project structure
+
+---
+
+## 🧰 Tech Stack
+
+| Technology    | Purpose                     |
+| ------------- | --------------------------- |
+| Python        | Core programming language   |
+| Gemini API    | Large Language Model        |
+| FastAPI       | Backend REST API            |
+| Pydantic      | Request/response validation |
+| RAG           | Knowledge retrieval         |
+| python-dotenv | Environment configuration   |
+| Uvicorn       | API server                  |
+
+---
+
+## 📁 Project Structure
+
+All project files are located directly in the repository root.
+
+```text
+.
+├── agent.py
+├── config.py
+├── main.py
+├── rag.py
+├── tools.py
+├── requirements.txt
+├── .env
+├── .env.example
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+### File Description
+
+#### `main.py`
+
+The FastAPI entry point.
+
+It creates the API application and exposes the agent through HTTP endpoints.
+
+#### `agent.py`
+
+Contains the main AI Agent logic.
+
+Responsible for:
+
+* Receiving user prompts
+* Communicating with Gemini
+* Using tools
+* Calling RAG when necessary
+* Returning the final response
+
+#### `tools.py`
+
+Contains custom tools that the AI agent can use.
+
+You can extend this file with tools such as:
+
+* Calculator
+* Database search
+* Web search
+* Product lookup
+* File search
+* Business logic
+
+#### `rag.py`
+
+Contains the Retrieval-Augmented Generation logic.
+
+The RAG component can retrieve information from your knowledge source and provide relevant context to Gemini.
+
+#### `config.py`
+
+Handles project configuration and environment variables.
+
+Sensitive credentials should **never be hardcoded** into the source code.
+
+#### `requirements.txt`
+
+Contains the Python dependencies required to run the project.
+
+---
+
+# ⚙️ Installation
+
+## 1. Install Python
 
 Download Python from the official Python website:
 
-https://www.python.org/downloads/windows/
+https://www.python.org/downloads/
 
-For AI/ML compatibility, **Python 3.11 or 3.12 is recommended** for this project.
+Python **3.11+** is recommended for this project.
 
-During installation:
+Verify the installation:
 
-1. Open the Python installer.
-2. Enable:
-
-```text
-Add python.exe to PATH
-```
-
-3. Click:
-
-```text
-Install Now
-```
-
-After installation, open a **new** PowerShell or CMD window.
-
-Check Python:
-
-```powershell
+```bash
 python --version
 ```
 
-Example:
+or:
 
-```text
-Python 3.11.x
-```
-
-Check pip:
-
-```powershell
-python -m pip --version
-```
-
-If `python` does not work, try:
-
-```powershell
+```bash
 py --version
 ```
 
 ---
 
-# 📦 2. Install Git
+## 2. Clone the Repository
 
-Download Git from:
+Clone the GitHub repository:
 
-https://git-scm.com/downloads
-
-Verify the installation:
-
-```powershell
-git --version
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-Example:
+Enter the project directory:
 
-```text
-git version 2.x.x
+```bash
+cd YOUR_REPOSITORY_NAME
 ```
 
 ---
 
-# 💻 3. Clone the Repository
+## 3. Create a Virtual Environment
 
-Open PowerShell or the VS Code terminal.
+Create a virtual environment:
 
-Clone the project:
-
-```powershell
-git clone https://github.com/AssemElnahas/gemini-agent.git
-```
-
-Enter the project:
-
-```powershell
-cd gemini-agent
-```
-
-Check the files:
-
-```powershell
-dir
-```
-
-You should see something similar to:
-
-```text
-.env.example
-.gitignore
-LICENSE
-README.md
-requirements.txt
-main.py
-agent.py
-tools.py
-RAG.py
-```
-
----
-
-# 🧪 4. Create a Virtual Environment
-
-A virtual environment keeps this project's Python packages isolated from your other projects.
-
-Run:
-
-```powershell
+```bash
 python -m venv venv
 ```
 
-This creates:
-
-```text
-gemini-agent/
-└── venv/
-```
-
----
-
-# ▶️ 5. Activate the Virtual Environment
-
 ### Windows PowerShell
+
+Activate it with:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-After activation, your terminal should look similar to:
-
-```text
-(venv) PS D:\Github repos\gemini-agent>
-```
-
-### If PowerShell blocks the activation script
-
-You may see:
-
-```text
-Activate.ps1 cannot be loaded because running scripts is disabled
-```
-
-Use CMD instead:
-
-```cmd
-venv\Scripts\activate.bat
-```
-
-Or allow locally created scripts for your Windows user:
+If PowerShell blocks script execution, run:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
@@ -187,119 +175,71 @@ Then activate again:
 .\venv\Scripts\Activate.ps1
 ```
 
----
+### Windows CMD
 
-# 📚 6. Upgrade pip
+Alternatively:
 
-With the virtual environment activated:
-
-```powershell
-python -m pip install --upgrade pip
+```cmd
+venv\Scripts\activate
 ```
 
-Verify:
+You should see:
 
-```powershell
-pip --version
+```text
+(venv)
 ```
+
+at the beginning of your terminal.
 
 ---
 
-# 📥 7. Install Project Dependencies
+# 📦 Install Dependencies
 
-The project contains a `requirements.txt` file.
+Install all required packages:
 
-Install everything with:
-
-```powershell
+```bash
 pip install -r requirements.txt
 ```
 
-You can verify installed packages:
+If `pip` needs to be upgraded:
 
-```powershell
-pip list
+```bash
+python -m pip install --upgrade pip
+```
+
+Then:
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-# 🔑 8. Get a Gemini API Key
+# 🔑 Gemini API Key
 
-The agent uses Google's Gemini API.
+This project requires a Gemini API key.
 
-Create a Gemini API key through **Google AI Studio**:
+Create your API key through Google's Gemini API / AI Studio platform.
 
-https://aistudio.google.com/
-
-Sign in with your Google account and create an API key.
-
-### ⚠️ Important
-
-Never put your API key directly inside your Python code.
-
-Don't do this:
-
-```python
-GEMINI_API_KEY = "your-real-api-key"
-```
-
-Instead, use an environment variable.
-
----
-
-# 🔐 9. Configure Environment Variables
-
-The repository contains:
-
-```text
-.env.example
-```
-
-Create a new file named:
+After obtaining your key, create a file named:
 
 ```text
 .env
 ```
 
-Your structure should be:
+in the project root.
 
-```text
-gemini-agent/
-│
-├── .env
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-│
-├── main.py
-├── agent.py
-├── tools.py
-├── RAG.py
-│
-└── data/
-```
-
-Inside `.env`:
+Example:
 
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-Replace:
+### Important
 
-```text
-your_gemini_api_key_here
-```
+Never upload your real `.env` file or API key to GitHub.
 
-with your real API key.
-
----
-
-# 🛡️ 10. Protect Your API Key
-
-Make sure `.gitignore` contains:
+Your `.gitignore` should contain:
 
 ```gitignore
 .env
@@ -308,122 +248,31 @@ __pycache__/
 *.pyc
 ```
 
-Your `.env` file should **never** be uploaded to GitHub.
+Use `.env.example` as the public template:
 
-Check Git status:
-
-```powershell
-git status
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
 ```
-
-You should not see `.env` listed as a file to commit.
 
 ---
 
-# 🧠 11. Project Structure
+# ▶️ Run the API
 
-The project is organized into several components:
+Start the FastAPI server with:
 
-```text
-gemini-agent/
-│
-├── .env
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-│
-├── main.py
-├── agent.py
-├── tools.py
-├── RAG.py
-│
-├── data/
-│   └── knowledge_base.txt
-│
-└── venv/
-```
-
-### `main.py`
-
-The FastAPI application.
-
-Responsible for exposing the agent through API endpoints.
-
-### `agent.py`
-
-Contains the AI Agent logic and Gemini integration.
-
-### `tools.py`
-
-Contains functions/tools that the AI agent can use.
-
-Examples:
-
-```text
-Calculator
-Database Search
-Product Search
-Stock Checker
-Web Search
-```
-
-### `RAG.py`
-
-Handles Retrieval-Augmented Generation.
-
-It allows the agent to retrieve information from a knowledge base before generating an answer.
-
-### `.env`
-
-Stores secret configuration such as the Gemini API key.
-
-### `requirements.txt`
-
-Contains the Python dependencies required by the project.
-
----
-
-# 🚀 12. Run the Project
-
-Make sure your virtual environment is activated:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
-Then start the FastAPI server:
-
-```powershell
+```bash
 uvicorn main:app --reload
 ```
 
 You should see something similar to:
 
 ```text
-INFO:     Uvicorn running on http://127.0.0.1:8000
-```
-
-Your backend is now running.
-
----
-
-# 🌐 13. Open the API
-
-Open your browser:
-
-http://127.0.0.1:8000
-
-You can also use:
-
-```text
-http://localhost:8000
+Uvicorn running on http://127.0.0.1:8000
 ```
 
 ---
 
-# 📖 14. Open FastAPI Swagger UI
+# 🌐 API Documentation
 
 FastAPI automatically provides interactive API documentation.
 
@@ -433,311 +282,201 @@ Open:
 http://127.0.0.1:8000/docs
 ```
 
-You should see the Swagger interface.
+You can use Swagger UI to test the AI Agent API directly from your browser.
 
-From there you can:
+Alternative documentation:
 
-1. Select an endpoint.
-2. Click **Try it out**.
-3. Enter your request.
-4. Click **Execute**.
-5. View the AI agent response.
+```text
+http://127.0.0.1:8000/redoc
+```
 
 ---
 
-# 🧪 15. Test the Agent
+# 🔌 Example API Request
 
-For example, if your API contains:
-
-```text
-POST /chat
-```
-
-You can send:
+Depending on your implementation, an endpoint can accept a request similar to:
 
 ```json
 {
-    "message": "Explain what an AI agent is."
+    "message": "What is artificial intelligence?"
 }
 ```
 
-The request flow is:
+Example using `curl`:
 
-```text
-Client
-   │
-   ▼
-FastAPI
-   │
-   ▼
-AI Agent
-   │
-   ▼
-Gemini
-   │
-   ▼
-Response
+```bash
+curl -X POST "http://127.0.0.1:8000/chat" \
+-H "Content-Type: application/json" \
+-d "{\"message\":\"What is artificial intelligence?\"}"
 ```
+
+The agent processes the request, communicates with Gemini, optionally uses its tools/RAG system, and returns the generated response.
 
 ---
 
-# 🔄 16. Run the Project Again
+# 🧠 How the Agent Works
 
-Every time you open the project:
+The general architecture is:
 
-### Step 1 — Open the project
-
-```powershell
-cd "D:\Github repos\gemini-agent"
+```text
+                    User
+                      │
+                      ▼
+                FastAPI API
+                      │
+                      ▼
+                 AI Agent
+                      │
+             ┌────────┴────────┐
+             ▼                 ▼
+          Gemini              Tools
+             │                 │
+             │                 ├── Calculator
+             │                 ├── Database
+             │                 └── Other Tools
+             │
+             ▼
+             RAG
+             │
+             ▼
+       Relevant Context
+             │
+             └──────────┐
+                        ▼
+                  Final Response
+                        │
+                        ▼
+                       User
 ```
 
-### Step 2 — Activate the environment
+The important concept is that Gemini is not simply being used as a chatbot.
 
-```powershell
-.\venv\Scripts\Activate.ps1
-```
+The **agent acts as the orchestration layer** between the user, LLM, tools, and knowledge retrieval system.
 
-### Step 3 — Run FastAPI
+---
 
-```powershell
+# 🧪 Testing
+
+Start the server:
+
+```bash
 uvicorn main:app --reload
-```
-
-### Step 4 — Open Swagger
-
-```text
-http://127.0.0.1:8000/docs
-```
-
----
-
-# 🛑 17. Stop the Server
-
-To stop FastAPI:
-
-```text
-CTRL + C
-```
-
-To deactivate the virtual environment:
-
-```powershell
-deactivate
-```
-
----
-
-# 🔧 Troubleshooting
-
-## Python is not recognized
-
-Try:
-
-```powershell
-py --version
-```
-
-If `py` works, you can create the environment using:
-
-```powershell
-py -3.11 -m venv venv
-```
-
-If neither works, reinstall Python and make sure:
-
-```text
-Add python.exe to PATH
-```
-
-is enabled.
-
----
-
-## PowerShell cannot activate venv
-
-Run:
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-
-Then:
-
-```powershell
-.\venv\Scripts\Activate.ps1
-```
-
----
-
-## `pip install` fails
-
-First upgrade pip:
-
-```powershell
-python -m pip install --upgrade pip
-```
-
-Then:
-
-```powershell
-pip install -r requirements.txt
-```
-
----
-
-## Gemini API key error
-
-Check that `.env` exists:
-
-```text
-gemini-agent/
-└── .env
-```
-
-And contains:
-
-```env
-GEMINI_API_KEY=your_api_key
-```
-
-Also make sure your Python application loads environment variables correctly.
-
----
-
-## Port 8000 is already being used
-
-Run FastAPI on another port:
-
-```powershell
-uvicorn main:app --reload --port 8001
 ```
 
 Then open:
 
 ```text
-http://127.0.0.1:8001/docs
+http://127.0.0.1:8000/docs
 ```
+
+Use Swagger UI to test the available endpoints.
+
+You can also test the API using tools such as:
+
+* Postman
+* cURL
+* Python requests
+* Frontend applications
 
 ---
 
-# 🏗️ AI Agent Architecture
+# 🔮 Future Improvements
 
-The long-term architecture of this project is:
+This project can be extended into a more advanced production AI Agent.
+
+Possible improvements:
+
+* 🗄️ PostgreSQL / SQL Server integration
+* 🔐 JWT authentication
+* 👤 User accounts
+* 💬 Conversation memory
+* 📚 Vector database
+* 🔎 Semantic search
+* 🌐 Web search tool
+* 📄 PDF document RAG
+* 🧠 Long-term agent memory
+* 🛒 E-commerce/product tools
+* 📊 Admin dashboard
+* 🔗 Frontend integration
+* 📱 Mobile application
+* ☁️ Cloud deployment
+* 🐳 Docker support
+* 🔄 Background tasks
+* 📈 Logging and monitoring
+
+---
+
+# 🎯 Example Use Cases
+
+This architecture can be adapted to build:
+
+### Customer Support Agent
 
 ```text
-                     ┌───────────────┐
-                     │     User      │
-                     └───────┬───────┘
-                             │
-                             ▼
-                     ┌───────────────┐
-                     │    FastAPI    │
-                     └───────┬───────┘
-                             │
-                             ▼
-                     ┌───────────────┐
-                     │  AI Agent     │
-                     └───────┬───────┘
-                             │
-                 ┌───────────┼───────────┐
-                 │           │           │
-                 ▼           ▼           ▼
-              Gemini        RAG        Tools
-                 │           │           │
-                 └───────────┼───────────┘
-                             │
-                             ▼
-                     ┌───────────────┐
-                     │   Response    │
-                     └───────────────┘
+Customer
+   ↓
+AI Agent
+   ↓
+Product Database + RAG
+   ↓
+Gemini
+   ↓
+Customer Response
 ```
 
----
+### E-Commerce Agent
 
-# 🗺️ Roadmap
+The agent can:
 
-## Phase 1 — Foundation
+* Search products
+* Check stock
+* Recommend products
+* Answer product questions
+* Retrieve order information
 
-* [x] Python setup
-* [x] Virtual environment
-* [x] Gemini integration
-* [x] Environment variables
-* [x] FastAPI
-* [x] Basic API
+### Company Knowledge Agent
 
-## Phase 2 — AI Agent
+The agent can answer questions using:
 
-* [ ] Agent reasoning
-* [ ] Tool calling
-* [ ] Multiple tools
-* [ ] Error handling
-* [ ] Conversation memory
-
-## Phase 3 — RAG
-
-* [ ] Document loading
-* [ ] Text chunking
-* [ ] Embeddings
-* [ ] Vector database
-* [ ] Semantic search
-* [ ] Context-aware responses
-
-## Phase 4 — Production
-
-* [ ] Authentication
-* [ ] Database
-* [ ] User sessions
-* [ ] Logging
-* [ ] Testing
-* [ ] Docker
-* [ ] Cloud deployment
-
-## Phase 5 — Integrations
-
-* [ ] Facebook Messenger
-* [ ] WhatsApp
-* [ ] E-commerce systems
-* [ ] Customer support platforms
-* [ ] Business databases
+* Company documents
+* PDFs
+* FAQs
+* Policies
+* Internal knowledge bases
 
 ---
 
-# 🧰 Technologies
+# 🔐 Security
 
-| Technology      | Purpose                   |
-| --------------- | ------------------------- |
-| Python          | Core development          |
-| Gemini          | Large Language Model      |
-| FastAPI         | Backend/API               |
-| Pydantic        | Data validation           |
-| RAG             | Knowledge retrieval       |
-| Vector Database | Semantic search           |
-| Git             | Version control           |
-| Swagger         | API testing/documentation |
+Never commit sensitive credentials.
 
----
-
-# 🎯 Project Goal
-
-The goal of this project is to understand how modern AI agents are built:
+Do not upload:
 
 ```text
-LLM
- ↓
-Agent
- ↓
-Tools
- ↓
-RAG
- ↓
-Memory
- ↓
-API
- ↓
-Real-world Application
+.env
 ```
 
-The final goal is to transform this project from a simple Gemini chatbot into a **production-ready AI Agent backend** capable of interacting with external systems and business data.
+or any file containing:
+
+```text
+GEMINI_API_KEY
+```
+
+Use:
+
+```text
+.env.example
+```
+
+to document the required environment variables.
+
+---
+
+# 📌 Development Status
+
+**Status:** 🚧 Active Development
+
+This repository is currently a foundation for building and experimenting with Gemini-powered AI Agents.
 
 ---
 
@@ -745,18 +484,17 @@ The final goal is to transform this project from a simple Gemini chatbot into a 
 
 **Assem Elnahas**
 
-Computer Science Graduate | AI & Backend Developer
+Computer Science Graduate
+AI & Backend Developer
 
-GitHub:
-https://github.com/AssemElnahas
-
-LinkedIn:
-https://www.linkedin.com/in/assem-elnahas-28887429/
+GitHub: **AssemElnahas**
 
 ---
 
-# 📜 License
+# 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the terms specified in the `LICENSE` file.
 
-See the `LICENSE` file for details.
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
